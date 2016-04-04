@@ -29,6 +29,10 @@ class Vanilla
     links = song_links
     binding.pry
 
+    # for refactoring: instantiate SongLink object (with the link)
+    # call .lyric_list/lyrics_array on it
+    # then all begin/end logic goes into SongLink, threadpool stays out
+
     body = []
     errors = []
     #BORN ON HALLOWEEN IS MISSING NOOO
@@ -44,9 +48,16 @@ class Vanilla
           # selects textbox via class name
             parsed_song = parse_song.search(".lyricbox")
           # iterates over each XML node and fetches text of each child
-            lyrics = parsed_song.map { |node| node.children.map(&:text) }
+            lyrics = parsed_song.map { |node|
+          # only returns value if node is a text node
+              node.children.map do |inner_node|
+                if inner_node.is_a?(Nokogiri::XML::Text)
+                  inner_node.text
+                end
+              end.compact
+            }
           # removes empty strings so db isn't FULLA HOLES
-            body << lyrics.flatten.select { |v| !v.chomp.empty? } #|| !v.include?("</") }
+            body << lyrics.flatten.select { |v| !v.chomp.empty? }
           rescue => e
             errors << [e, link]
           end
