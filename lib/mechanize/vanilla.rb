@@ -31,7 +31,9 @@ class Vanilla
 
     body = []
     errors = []
+    #BORN ON HALLOWEEN IS MISSING NOOO
 
+    #clicks each song link and scrapes the text
     links.each_slice(5) do |link_set|
       thread_pool = []
       link_set.each do |link|
@@ -39,7 +41,12 @@ class Vanilla
           begin
             song = link.click
             parse_song = Nokogiri::HTML(song.body)
-            body << parse_song.search(".lyricbox")
+          # selects textbox via class name
+            parsed_song = parse_song.search(".lyricbox")
+          # iterates over each XML node and fetches text of each child
+            lyrics = parsed_song.map { |node| node.children.map(&:text) }
+          # removes empty strings so db isn't FULLA HOLES
+            body << lyrics.flatten.select { |v| !v.chomp.empty? } #|| !v.include?("</") }
           rescue => e
             errors << [e, link]
           end
@@ -47,7 +54,6 @@ class Vanilla
       end
       thread_pool.map(&:join)
     end
-
   end
 
   def song_links
