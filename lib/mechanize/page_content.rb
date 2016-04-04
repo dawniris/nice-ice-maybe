@@ -32,9 +32,9 @@ class PageContent
   end
 
   def lyrics
-  # iterates over each XML node and fetches text of each child
+  # iterates over each XML node and scrapes text of each child
     @lyrics ||= parsed_song.map { |node|
-  # only returns value if node is a text node
+    # only returns value if node is a text node
       node.children.map do |inner_node|
         if inner_node.is_a?(Nokogiri::XML::Text)
           inner_node.text

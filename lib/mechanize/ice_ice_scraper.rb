@@ -1,8 +1,8 @@
 require 'rubygems'
 require 'mechanize'
 require 'pry'
-
 require_relative 'page_content'
+
 #from /nice-ice-maybe:
 # be rails c
 # require './lib/mechanize/ice_ice_scraper.rb'
@@ -29,9 +29,6 @@ class IceIceScraper
     end
   end
 
-    #make new method song_link_objects
-  #song_links.map
-  # SongLink.new(link)
   def body
     @body ||= []
   end
@@ -40,8 +37,8 @@ class IceIceScraper
     @errors ||= []
   end
 
-  def call
-    #clicks each song link and scrapes the text
+  def scrape
+    #iterates through each song link and scrapes the text
     song_links.each_slice(5) do |link_set|
       thread_pool = []
       link_set.each do |link|
@@ -59,7 +56,6 @@ class IceIceScraper
     binding.pry
   end
 
-
 end
 
-scraper = IceIceScraper.new('http://lyrics.wikia.com/wiki/Vanilla_Ice'); scraper.call
+scraper = IceIceScraper.new('http://lyrics.wikia.com/wiki/Vanilla_Ice'); scraper.scrape
