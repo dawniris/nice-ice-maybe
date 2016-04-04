@@ -32,20 +32,23 @@ class IceIceScraper
     #make new method song_link_objects
   #song_links.map
   # SongLink.new(link)
+  def body
+    @body ||= []
+  end
+
+  def errors
+    @errors ||= []
+  end
 
   def call
-    links = song_links
-    body = []
-    errors = []
-
     #clicks each song link and scrapes the text
-    links.each_slice(5) do |link_set|
+    song_links.each_slice(5) do |link_set|
       thread_pool = []
       link_set.each do |link|
         thread_pool << Thread.new do
           begin
             page = PageContent.new(link)
-            body << page.parse_song_page
+            body << page.normalize_data
           rescue => e
             errors << [e, link]
           end
@@ -55,6 +58,7 @@ class IceIceScraper
     end
     binding.pry
   end
+
 
 end
 

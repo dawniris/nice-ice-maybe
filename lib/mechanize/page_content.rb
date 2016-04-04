@@ -31,9 +31,9 @@ class PageContent
     @parsed_song ||= fetch_song.search(".lyricbox")
   end
 
-  def parse_song_page
+  def lyrics
   # iterates over each XML node and fetches text of each child
-    lyrics = parsed_song.map { |node|
+    @lyrics ||= parsed_song.map { |node|
   # only returns value if node is a text node
       node.children.map do |inner_node|
         if inner_node.is_a?(Nokogiri::XML::Text)
@@ -41,6 +41,9 @@ class PageContent
         end
       end.compact
     }
+  end
+
+  def normalize_data
   # removes empty strings so db isn't FULLA HOLES
     lyrics.flatten.select { |v| !v.chomp.empty? }
   end
