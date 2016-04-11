@@ -7,5 +7,7 @@ class PoemsController < ApplicationController
   end
 
   def new
+    @poem = Poem.generate_random
   end
+
 end

@@ -4,12 +4,7 @@ Rails.application.routes.draw do
 
   root 'poems#generate'
 
-  # resources :poems do
-  #   collection do
-  #     post 'generate_preview'
-  #     get 'preview'
-  #   end
-  # end
+  resources :poems
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
