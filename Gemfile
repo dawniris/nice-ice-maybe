@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
 gem 'mechanize'
-
-gem 'pry'
+gem 'simple_form'
+gem 'launchy'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
@@ -37,7 +37,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'pry'
   gem 'factory_girl'
+  gem 'rspec-rails'
+  gem 'capybara'
 end
 
 group :development do

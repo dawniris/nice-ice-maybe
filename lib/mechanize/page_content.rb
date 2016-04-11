@@ -2,21 +2,12 @@ require 'rubygems'
 require 'mechanize'
 require 'pry'
 
-
-
 class PageContent
   attr_reader :link
 
   def initialize(link)
     @link = link
   end
-
-    # for refactoring: instantiate SongLink object (with the link)
-    # call .lyric_list/lyrics_array on it
-    # then all begin/end logic goes into SongLink, threadpool stays out
-
-
-  #anywhere you have local variable (body =, lyrics =) is its own method
 
   def click_song
     @click_song ||= link.click
