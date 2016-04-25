@@ -1,6 +1,13 @@
-<%= simple_form_for @poem do |f| %>
-  <%= f.input :name %>
-  <%= f.input :data %>
-  <%= f.button :submit, "save!" %>
-  <%= link_to "regenerate!", new_poem_path %>
-<% end %>
+<div class='row'>
+  <div class='col-lg-12'>
+    <%= simple_form_for @poem do |f| %>
+      <br>
+      <%= f.input :name %>
+      <br>
+      <%= f.input :data , input_html: { class: "textbox" } %>
+      <br>
+      <%= f.button :submit, "save!" %>
+      <%= link_to "regenerate!", new_poem_path, class: "btn btn-primary"  %>
+    <% end %>
+  </div>
+</div>
