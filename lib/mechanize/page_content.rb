@@ -34,9 +34,23 @@ class PageContent
     }
   end
 
-  def normalize_data
+  def flatten_lyrics
   # removes empty strings so db isn't FULLA HOLES
     lyrics.flatten.select { |v| !v.chomp.empty? }
   end
 
+  def song
+    @song ||= Song.create(:payload => parsed_song.text)
+  end
+
+  def song_slices
+    @song_slices ||= flatten_lyrics.map do |lyric|
+      SongSlice.create(:chunk => lyric, :song => song)
+    end
+  end
+
+  def normalize_data
+    song
+    song_slices
+  end
 end

@@ -53,7 +53,6 @@ class IceIceScraper
       end
       thread_pool.map(&:join)
     end
-    binding.pry
   end
 
 end
