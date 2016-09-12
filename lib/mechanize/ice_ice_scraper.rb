@@ -54,7 +54,4 @@ class IceIceScraper
       thread_pool.map(&:join)
     end
   end
-
 end
-
-scraper = IceIceScraper.new('http://lyrics.wikia.com/wiki/Vanilla_Ice'); scraper.scrape
