@@ -1,6 +1,5 @@
 require 'rubygems'
 require 'mechanize'
-require 'pry'
 require_relative 'page_content'
 
 #from /nice-ice-maybe:
