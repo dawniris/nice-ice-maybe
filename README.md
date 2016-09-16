@@ -7,13 +7,16 @@ sweet, sweet poetry (possibly)
 don't _you_ get all _your_ best app ideas on Friday afternoon at Ruby on Ales?
 
 ## the how
-First create a local clone of the _nice-ice-maybe_ repo, then `cd` into that directory and execute the following three rake tasks:
+First create a local clone of the _nice-ice-maybe_ repo, then `cd` into that directory and execute the following four rake tasks:
 
 ```
 bundle exec rake db:create
 bundle exec rake db:migrate
 bundle exec rake populate_lyric_db
+bundle exec rake load_images_db
 ```
+
+Note that in order to load images, you'll have to set up your own .env file with Bing credentials.
 
 Now spin up a local Rails server with `bundle exec rails s` and poem to your heart's content by navigating to `http://localhost:3000/` in your browser of choice (i.e. not IE).
 
