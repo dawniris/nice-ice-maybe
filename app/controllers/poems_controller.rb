@@ -16,6 +16,7 @@ class PoemsController < ApplicationController
 
   def new
     @poem = Poem.generate_random
+    @image_url = Image.grab_random
   end
 
   def show

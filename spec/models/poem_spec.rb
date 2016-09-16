@@ -1,5 +1,5 @@
 RSpec.describe Poem do
-  describe 'generate_random' do
+  describe '.generate_random' do
     let(:poem) { Poem.generate_random }
     let!(:song_slice) { FactoryGirl.create(:song_slice) }
     let(:song_slice_double) { instance_double("SongSlice", :chunk => "bloop")}

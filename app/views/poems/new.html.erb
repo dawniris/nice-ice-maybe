@@ -1,11 +1,19 @@
 <div class='row'>
-  <div class='col-lg-12'>
+  <div class='col-xs-12'>
     <%= simple_form_for @poem do |f| %>
-      <br>
-      <%= f.input :name %>
-      <br>
-      <%= f.input :data , input_html: { class: "textbox" } %>
-      <br>
+      <div class='row'>
+        <div class='col-xs-6'>
+          <br>
+          <%= f.input :name %>
+          <br>
+          <%= f.input :data , input_html: { class: "textbox" } %>
+          <br>
+        </div>
+        <div class='col-xs-6'>
+          <%= f.hidden_field :image_url, value: @poem.image_url || @image_url %>
+          <img class='image' src=<%= @poem.image_url || @image_url %>></img>
+        </div>
+      </div>
       <%= f.button :submit, "save!" %>
       <%= link_to "regenerate!", new_poem_path, class: "btn btn-primary"  %>
     <% end %>
