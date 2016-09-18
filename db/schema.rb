@@ -30,6 +30,12 @@ ActiveRecord::Schema.define(version: 20160916203053) do
     t.text     "image_url"
   end
 
+  create_table "quotes", force: :cascade do |t|
+    t.text     "quote_text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "song_slices", force: :cascade do |t|
     t.text     "chunk"
     t.integer  "song_id"
