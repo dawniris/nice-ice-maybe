@@ -9,11 +9,11 @@ class QuoteScraper
   end
 
   def scrape
-  	docs.each do |doc|
-  		quotes(doc).each do |quote|
+    docs.each do |doc|
+      quotes(doc).each do |quote|
         Quote.find_or_create_by(quote_text: quote.inner_text)
       end
-  	end
+    end
     nil
   end
 
