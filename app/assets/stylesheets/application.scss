@@ -36,3 +36,14 @@ body {
   background-color: #DA93FF;
 }
 
+div.quoteContainer {
+  height: 200px; 
+  width: 400px;
+  margin: 150px auto;
+}
+
+div.quoteContainer p {
+  font-family: ‘Courier New’, Courier, monospace;
+  font: 20px;
+  text-align: center;
+}

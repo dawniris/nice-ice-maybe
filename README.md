@@ -14,6 +14,7 @@ bundle exec rake db:create
 bundle exec rake db:migrate
 bundle exec rake populate_lyric_db
 bundle exec rake load_images_db
+bundle exec rake populate_quote_db
 ```
 
 Note that in order to load images, you'll have to set up your own .env file with Bing credentials.

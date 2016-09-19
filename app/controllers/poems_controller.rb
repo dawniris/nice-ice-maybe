@@ -2,6 +2,7 @@ class PoemsController < ApplicationController
   before_action :set_poem, only: [:show, :destroy]
   def generate
     @poem = Poem.new
+    @quote = Quote.grab_random.quote_text
   end
 
   def create
