@@ -7,7 +7,7 @@ sweet, sweet poetry (possibly)
 don't _you_ get all _your_ best app ideas on Friday afternoon at Ruby on Ales?
 
 ## the how
-First create a local clone of the _nice-ice-maybe_ repo, then `cd` into that directory and execute the following four rake tasks:
+First create a local clone of the _nice-ice-maybe_ repo, then `cd` into that directory and execute the following five rake tasks:
 
 ```
 bundle exec rake db:create
